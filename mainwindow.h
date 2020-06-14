@@ -24,11 +24,6 @@ public:
 private:
     Ui::MainWindow *ui;
     cell *con;
-    typedef struct{
-        int boardSizeX;
-        int boardSizeY;
-    }config;
-    config conf;
     void paintCell();
     QTimer timer;
 

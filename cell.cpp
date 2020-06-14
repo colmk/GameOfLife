@@ -15,11 +15,11 @@ cell::~cell()
     if(map != nullptr) free(map);
 }
 
-void cell::setSize(int size_x, int size_y)
+void cell::setSize(int sizeX, int sizeY)
 {
-    this->sizeX = size_x;
-    this->sizeY = size_y;
-    this->indexLimit = size_x * size_y;
+    this->sizeX = sizeX;
+    this->sizeY = sizeY;
+    this->indexLimit = sizeX * sizeY;
     if(map != nullptr)  free(map);
     setMap();
 }
@@ -27,7 +27,7 @@ void cell::setSize(int size_x, int size_y)
 void cell::setMap()
 {
     if(map!= nullptr)
-        free( map);
+        free(map);
     int *tmp = static_cast<int *>(calloc(sizeof(int),indexLimit));
     this->map = tmp;
     std::random_device rd;
@@ -48,12 +48,12 @@ void cell::updateCell(const int posX, const int posY)
     for(int i=-1;i<2;++i)
         for(int j=-1;j<2;j++)
         {
-            int index_tmp =index+i*sizeY+j;
+            int indexTmp =index+i*sizeY+j;
             if(checkLimit(posX,posY,i,j))
             {
-                if(index_tmp < index && map[index_tmp] & 2)
+                if(indexTmp < index && map[indexTmp] & 2)
                     ++count;
-                else if(index_tmp > index && map[index_tmp] & 1)
+                else if(indexTmp > index && map[indexTmp] & 1)
                     ++count;
             }
 
